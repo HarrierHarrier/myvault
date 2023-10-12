@@ -1,0 +1,28 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Vitaly Lunev", email = "v.lunev.mail@gmail.com"},
+]
+dependencies = [
+    "django>=4",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm.scripts]
+migrate = "python manage.py migrate"
+start = "python manage.py runserver"
+post_init = { composite = ["pdm install", "migrate", "start"] }
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=7.4.2",
+    "pytest-cov>=4.1.0",
+]
+lint = [
+    "mypy>=1.6.0",
+    "flake8>=6.1.0",
+]
